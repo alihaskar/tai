@@ -86,6 +86,30 @@ config(:tai,
       },
       opts: %{}
     ],
+    huobi: [
+      enabled: true,
+      adapter: Tai.VenueAdapters.Huobi,
+      # credentials: %{
+      #   main: %{
+      #     api_key: {:system_file, "OKEX_API_KEY"},
+      #     api_secret: {:system_file, "OKEX_API_SECRET"},
+      #     api_passphrase: {:system_file, "OKEX_API_PASSPHRASE"}
+      #   }
+      # },
+      opts: %{}
+    ],
+    huobi_futures: [
+      enabled: true,
+      adapter: Tai.VenueAdapters.Huobi,
+      # credentials: %{
+      #   main: %{
+      #     api_key: {:system_file, "OKEX_API_KEY"},
+      #     api_secret: {:system_file, "OKEX_API_SECRET"},
+      #     api_passphrase: {:system_file, "OKEX_API_PASSPHRASE"}
+      #   }
+      # },
+      opts: %{}
+    ],
     binance: [
       enabled: true,
       adapter: Tai.VenueAdapters.Binance,
@@ -121,7 +145,16 @@ config(:tai,
   }
 )
 
-config(:tai, :test_venue_adapters_products, [:binance, :bitmex, :deribit, :gdax, :mock, :okex])
+config(:tai, :test_venue_adapters_products, [
+  :binance,
+  :bitmex,
+  :deribit,
+  :gdax,
+  :mock,
+  :okex,
+  :huobi
+])
+
 config(:tai, :test_venue_adapters_accounts, [:binance, :bitmex, :deribit, :gdax, :mock, :okex])
 config(:tai, :test_venue_adapters_accounts_error, [:bitmex])
 config(:tai, :test_venue_adapters_maker_taker_fees, [:mock, :binance, :gdax, :okex])

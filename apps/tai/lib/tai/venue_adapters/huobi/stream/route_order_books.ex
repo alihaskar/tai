@@ -1,6 +1,6 @@
-defmodule Tai.VenueAdapters.OkEx.Stream.RouteOrderBooks do
+defmodule Tai.VenueAdapters.Huobi.Stream.RouteOrderBooks do
   use GenServer
-  alias Tai.VenueAdapters.OkEx.Stream.ProcessOrderBook
+  alias Tai.VenueAdapters.Huobi.Stream.ProcessOrderBook
 
   defmodule State do
     @type venue_id :: Tai.Venue.id()
@@ -32,31 +32,31 @@ defmodule Tai.VenueAdapters.OkEx.Stream.RouteOrderBooks do
   @spec init(state) :: {:ok, state}
   def init(state), do: {:ok, state}
 
-  def handle_cast(
-        {%{"action" => "partial", "data" => data}, received_at},
-        state
-      ) do
-    data
-    |> Enum.each(fn %{"instrument_id" => venue_symbol} = msg ->
-      {state, venue_symbol}
-      |> forward({:snapshot, msg, received_at})
-    end)
+  # def handle_cast(
+  #       {%{"action" => "partial", "data" => data}, received_at},
+  #       state
+  #     ) do
+  #   data
+  #   |> Enum.each(fn %{"instrument_id" => venue_symbol} = msg ->
+  #     {state, venue_symbol}
+  #     |> forward({:snapshot, msg, received_at})
+  #   end)
 
-    {:noreply, state}
-  end
+  #   {:noreply, state}
+  # end
 
-  def handle_cast(
-        {%{"action" => "update", "data" => data}, received_at},
-        state
-      ) do
-    data
-    |> Enum.each(fn %{"instrument_id" => venue_symbol} = msg ->
-      {state, venue_symbol}
-      |> forward({:update, msg, received_at})
-    end)
+  # def handle_cast(
+  #       {%{"action" => "update", "data" => data}, received_at},
+  #       state
+  #     ) do
+  #   data
+  #   |> Enum.each(fn %{"instrument_id" => venue_symbol} = msg ->
+  #     {state, venue_symbol}
+  #     |> forward({:update, msg, received_at})
+  #   end)
 
-    {:noreply, state}
-  end
+  #   {:noreply, state}
+  # end
 
   defp build_stores(products) do
     products

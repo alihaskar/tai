@@ -39,6 +39,8 @@ defmodule Tai.Mixfile do
       # {:ex_okex, github: "fremantle-capital/ex_okex", branch: "master"},
       {:ex_okex, "~> 0.4"},
       {:ex_gdax, "~> 0.1.6"},
+      # {:ex_huobi, "~> 0.0.2"},
+      {:ex_huobi, path: "~/workspace/fremantle_capital/ex_huobi"},
       {:decimal, "~> 1.7"},
       {:httpoison, "~> 1.0"},
       {:juice, "~> 0.0.3"},

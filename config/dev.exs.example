@@ -54,6 +54,18 @@ config :tai,
         }
       }
     ],
+    huobi: [
+      start_on_boot: true,
+      adapter: Tai.VenueAdapters.Huobi,
+      products: "btc200626 ltc200626 eth200626",
+      credentials: %{
+        main: %{
+          api_key: {:system_file, "HUOBI_API_KEY"},
+          api_secret: {:system_file, "HUOBI_API_SECRET"},
+          api_passphrase: {:system_file, "HUOBI_API_PASSPHRASE"}
+        }
+      }
+    ],
     binance: [
       start_on_boot: true,
       adapter: Tai.VenueAdapters.Binance,
